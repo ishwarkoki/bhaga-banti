@@ -18,7 +18,7 @@ COPY --from=deps /app/node_modules ./node_modules
 COPY . .
 COPY package.json pnpm-lock.yaml ./
 
-RUN pnpm build && pnpm prune --prod
+RUN pnpm build
 
 FROM base AS runtime
 
