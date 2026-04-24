@@ -32,3 +32,6 @@ build
 # OS files
 .DS_Store
 Thumbs.db
+
+#opencode config files 
+opencode.jsonc
