@@ -8,7 +8,7 @@
   "scripts": {
     "dev": "./scripts/dev-server.sh",
     "dev:watch": "tsx watch src/app.ts",
-    "build": "tsc",
+    "build": "tsx scripts/generate-swagger.ts && tsc && cp src/config/swagger-generated.json dist/src/config/",
     "start": "node dist/app.js",
     "deploy": "pnpm build && pnpm db:push && pnpm auth:generate",
     "typecheck": "tsc --noEmit",

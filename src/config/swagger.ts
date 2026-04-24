@@ -1,5 +1,17 @@
 import swaggerJsdoc from 'swagger-jsdoc';
 import { APP_NAME, APP_DESCRIPTION } from '../utils/constants.js';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+const possiblePaths = [
+  path.join(__dirname, 'swagger-generated.json'),
+  path.join(__dirname, '..', '..', 'src', 'config', 'swagger-generated.json'),
+];
+const generatedSpecPath = possiblePaths.find((p) => fs.existsSync(p)) || possiblePaths[0];
 
 const options: swaggerJsdoc.Options = {
   definition: {
@@ -405,4 +417,16 @@ const options: swaggerJsdoc.Options = {
   apis: ['./src/routes/*.ts', './src/controllers/*.ts'],
 };
 
-export const swaggerSpec = swaggerJsdoc(options);
+const swaggerSpec = swaggerJsdoc(options) as any;
+
+const baseSpecPaths = swaggerSpec.paths || {};
+const scannedPaths = fs.existsSync(generatedSpecPath)
+  ? JSON.parse(fs.readFileSync(generatedSpecPath, 'utf-8')).paths
+  : {};
+
+swaggerSpec.paths = {
+  ...baseSpecPaths,
+  ...scannedPaths,
+};
+
+export { swaggerSpec };
