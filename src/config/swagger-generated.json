@@ -1,8 +1,8 @@
 {
   "openapi": "3.0.0",
   "info": {
-    "title": "Bhaga-Banti API",
-    "description": "A Splitwise clone for sharing expenses with friends",
+    "title": "Bhaga-Banti",
+    "description": "Share expenses with friends and family",
     "version": "1.0.0"
   },
   "servers": [
@@ -1257,33 +1257,113 @@
           }
         }
       }
+    },
+    "/": {
+      "get": {
+        "tags": [
+          "System"
+        ],
+        "summary": "Get service entrypoint metadata",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Service URLs"
+          }
+        }
+      }
+    },
+    "/health": {
+      "get": {
+        "tags": [
+          "System"
+        ],
+        "summary": "Health check",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Health status"
+          }
+        }
+      }
+    },
+    "/api/auth/sign-up/email": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Sign up with email and password",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "User signed up"
+          }
+        }
+      }
+    },
+    "/api/auth/sign-in/email": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Sign in with email and password",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "User signed in"
+          }
+        }
+      }
+    },
+    "/api/auth/sign-in/social": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Start social login",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "OAuth initialized"
+          }
+        }
+      }
+    },
+    "/api/auth/get-session": {
+      "get": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Get current session",
+        "responses": {
+          "200": {
+            "description": "Session or null"
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Get current session (POST)",
+        "responses": {
+          "200": {
+            "description": "Session or null"
+          }
+        }
+      }
+    },
+    "/api/auth/sign-out": {
+      "post": {
+        "tags": [
+          "Authentication"
+        ],
+        "summary": "Sign out",
+        "responses": {
+          "200": {
+            "description": "Signed out"
+          }
+        }
+      }
     }
-  },
-  "components": {},
-  "tags": [
-    {
-      "name": "Authentication",
-      "description": "Authentication endpoints (Better Auth)"
-    },
-    {
-      "name": "Balances",
-      "description": "Balance and debt calculation endpoints"
-    },
-    {
-      "name": "Expenses",
-      "description": "Expense management endpoints"
-    },
-    {
-      "name": "Groups",
-      "description": "Group management endpoints"
-    },
-    {
-      "name": "Invites",
-      "description": "Group invitation endpoints"
-    },
-    {
-      "name": "Settlements",
-      "description": "Settlement/Payment recording endpoints"
-    }
-  ]
+  }
 }
