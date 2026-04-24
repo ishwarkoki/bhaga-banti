@@ -1,6 +1,6 @@
 import { pgTable, varchar, timestamp, pgEnum } from 'drizzle-orm/pg-core';
-import { users } from './users';
-import { groups } from './groups';
+import { users } from './users.js';
+import { groups } from './groups.js';
 
 export const invitationStatusEnum = pgEnum('invitation_status', [
   'pending',
