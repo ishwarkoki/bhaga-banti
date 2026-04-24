@@ -41,6 +41,21 @@ const basePaths = {
       tags: ['Authentication'],
       summary: 'Start social login',
       security: [],
+      requestBody: {
+        required: true,
+        content: {
+          'application/json': {
+            schema: {
+              type: 'object',
+              required: ['provider', 'callbackURL'],
+              properties: {
+                provider: { type: 'string', enum: ['google'] },
+                callbackURL: { type: 'string' },
+              },
+            },
+          },
+        },
+      },
       responses: { 200: { description: 'OAuth initialized' } },
     },
   },
