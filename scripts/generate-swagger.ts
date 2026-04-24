@@ -74,7 +74,7 @@ const mergedPaths = { ...(scannedSpec.paths || {}), ...basePaths };
 const spec = {
   openapi: '3.0.0',
   info: { title: APP_NAME, description: APP_DESCRIPTION, version: '1.0.0' },
-  servers: [{ url: process.env.BETTER_AUTH_URL || 'http://localhost:3000' }],
+  servers: [{ url: process.env.BETTER_AUTH_URL || 'https://bhaga-banti.onrender.com/' }],
   paths: mergedPaths,
 };
 
