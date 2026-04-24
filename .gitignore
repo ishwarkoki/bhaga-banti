@@ -1,0 +1,34 @@
+# Node modules
+node_modules
+dist
+
+# Environment files - NEVER commit these
+.env
+.env.local
+.env.*.local
+
+# secrets files
+.pnpm-store 
+.secrets
+secrets.json
+
+# IDE and editor
+.vscode
+.idea
+
+# Logs
+*.log
+logs/
+
+# Drizzle ORM
+.drizzle
+
+# Test coverage
+coverage
+
+# Build output
+build
+
+# OS files
+.DS_Store
+Thumbs.db
