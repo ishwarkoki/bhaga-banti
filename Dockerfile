@@ -30,4 +30,4 @@ COPY --from=builder /app/dist ./dist
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "pnpm db:generate && pnpm db:push && pnpm auth:generate && node dist/app.js"]
+CMD ["node", "dist/app.js"]

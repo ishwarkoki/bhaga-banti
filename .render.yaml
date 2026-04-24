@@ -1,0 +1,3 @@
+postDeploy:
+  - pnpm db:push
+  - pnpm auth:generate
